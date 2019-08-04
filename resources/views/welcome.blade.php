@@ -1,99 +1,43 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+@section('content')
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="{{ asset('img/slide-1.jpg') }}" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{{ asset('img/slide-2.jpg') }}" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{{ asset('img/slide-3.jpg') }}" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<main class="py-4">
+  <div class="container mt-1 pt-1">
+    <div class="formato-izquierda" style="text-align: center;">
+      <h1 class="entry-title" style="text-transform:uppercase; text-align:left;">
+        INICIO
+      </h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque volutpat mauris ac lacus congue sagittis eget at nunc. Fusce pulvinar libero ut efficitur fermentum. Nullam ante tortor, lacinia id hendrerit a, molestie non neque. Mauris placerat ut erat ac vestibulum. Nam a erat risus. Nunc varius bibendum nibh in varius. Suspendisse nec tortor sagittis metus consectetur bibendum sed in orci. Phasellus sem nibh, cursus in tortor sit amet, placerat sollicitudin est. Nunc molestie elementum elit a tincidunt. Fusce tempus tristique erat at cursus. Aenean sagittis sit amet mauris vitae pretium. Aenean quis mauris ut justo condimentum vehicula. Sed eleifend ex volutpat est elementum posuere. Pellentesque enim metus, bibendum vehicula tortor ut, iaculis pretium elit. Integer nec diam nec sem hendrerit ornare id quis elit. Ut lacinia euismod ligula commodo tristique.Aliquam eget sapien ac ex cursus dignissim. Quisque massa orci, vehicula a egestas eget, vehicula vel mi. Nunc tempor sit amet ante sed elementum. Donec vitae elit at arcu vestibulum aliquam. Maecenas consectetur leo non ex lobortis imperdiet. Pellentesque a dui eu risus convallis commodo. Suspendisse scelerisque turpis in lobortis posuere. Phasellus a sagittis ipsum, nec sagittis metus. In mollis, mauris vel cursus porta, nibh risus consectetur nulla, non tincidunt sem nisl vitae nisl.Maecenas laoreet elit nec quam venenatis dapibus. Duis ultricies venenatis metus, sit amet sollicitudin dui ornare vel. Vivamus non dolor orci. Sed volutpat dui in purus eleifend vestibulum. Quisque lobortis ac risus id ornare. Donec placerat mi sem, nec imperdiet enim tempor nec. Vivamus molestie cursus ligula eget viverra. Donec nunc sem, finibus ac ultrices vel, gravida sed turpis. Cras in nulla eleifend, aliquet ligula ac, dapibus ipsum. Proin tempus nibh vitae orci facilisis ullamcorper. Cras ac nibh non nunc consequat elementum. Aliquam et rutrum ex. Ut condimentum metus sed tristique finibus.
+      </p>
+      <hr>
+    </div>
+  </div>
+</main>
+@endsection

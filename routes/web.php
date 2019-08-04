@@ -15,16 +15,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/contacto', function () {
+    return view('contacto');
+});
+
+Route::get('/quienes', function () {
+    return view('quienes');
+});
+
+Route::get('/servicios', function () {
+    return view('servicios');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/quienes', 'HomeController@index')->name('quienes');
-
-Route::get('/servicios', 'HomeController@index')->name('servicios');
 
 Route::get('/proyectosej', 'HomeController@index')->name('proyectosej');
 
 Route::get('/proyectosde', 'HomeController@index')->name('proyectosde');
 
-Route::get('/contacto', 'HomeController@index')->name('contacto');
+Route::get('/contacto2', 'HomeController@index')->name('contacto2');

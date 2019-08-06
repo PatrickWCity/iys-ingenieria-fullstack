@@ -2,51 +2,47 @@
 
 @section('content')
 <div class="container mt-1 pt-1">
-    <div class="formato-izquierda" style="text-align: center;">
+    <div class="formato-izquierda">
         <main class="py-4">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-8">
+                    <div class="col-lg-8">
                         <div class="card">
-                            <h1 class="card-header">
+                            <h1 class="card-header" style="text-align: center;">
                                 Contacto
                             </h1>
                             <div class="card-body">
-                                <form action="" method="POST">
-                                    <input name="_token" type="hidden" value="z8cCdwhW8YGnCE2NKIng7cfQZUuXJ8e6pmuPGwbU">
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label text-md-right" for="nombre">
-                                            Nombre y Apellido.
-                                        </label>
-                                        <div class="col-md-6">
-                                            <input autofocus="" class="form-control" id="nombre" name="nombre"
-                                                required="" type="text" value="">
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-md-4 col-form-label text-md-right" for="correo">
-                                            Email.
-                                        </label>
-                                        <div class="col-md-6">
-                                            <input class="form-control" id="correo" name="password" required=""
-                                                type="Email">
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="form-group row mb-0">
-                                        <div class="col-md-4 offset-md-4">
-                                            <button class="btn btn-primary" type="submit">
-                                                enviar
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                </form>
+                                {!! Form::open(['action' => 'WelcomeController@contacto','method' => 'post']) !!}
+                                <div class="form-group">
+                                    {{Form::label('nombre', 'Nombre')}}
+                                    {{Form::text('nombre','', ['class'=> 'form-control', 'placeholder'=>'Nombre','required'])}}
+                                </div>
+                                <div class="form-group">
+                                    {{Form::label('appat', 'Apellido Paterno')}}
+                                    {{Form::text('appat','', ['class'=> 'form-control', 'placeholder'=>'Apellido Paterno','required'])}}
+                                </div>
+                                <div class="form-group">
+                                    {{Form::label('apmat', 'Apellido Materno')}}
+                                    {{Form::text('apmat','', ['class'=> 'form-control', 'placeholder'=>'Apellido Materno'])}}
+                                </div>
+                                <div class="form-group">
+                                    {{Form::label('direccion', 'Direccion')}}
+                                    {{Form::text('direccion','', ['class'=> 'form-control', 'placeholder'=>'Direccion'])}}
+                                </div>
+                                <div class="form-group">
+                                    {{Form::label('telefono', 'Telefono')}}
+                                    {{Form::text('telefono','', ['class'=> 'form-control', 'placeholder'=>'Telefono','required'])}}
+                                </div>
+                                <div class="form-group">
+                                    {{Form::label('email', 'Email')}}
+                                    {{Form::text('email','', ['class'=> 'form-control', 'placeholder'=>'Email','required'])}}
+                                </div>
+                                <div class="form-group">
+                                    {{Form::label('comentario', 'Comentario')}}
+                                    {{Form::textarea('comentario', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Comentario','required'])}}
+                                </div>
+                                {{Form::submit('Enviar', ['class'=>'btn btn-primary'])}}
+                                {!! Form::close() !!}
                             </div>
                         </div>
                     </div>

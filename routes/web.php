@@ -19,6 +19,8 @@ Route::get('/contacto', function () {
     return view('contacto');
 });
 
+Route::post('/contacto', 'WelcomeController@contacto');
+
 Route::get('/quienes', function () {
     return view('quienes');
 });

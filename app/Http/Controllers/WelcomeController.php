@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 // use App\Http\Controllers\Controller;
 use App\Mail\Contacto;
 use Illuminate\Support\Facades\Mail;
+use App\Proyecto;
 
 
 class WelcomeController extends Controller
@@ -106,5 +107,27 @@ class WelcomeController extends Controller
         Mail::to($request->email)->send(new Contacto($request));
 
         return redirect('/contacto')->with('success', 'Enviado con éxito!');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function proyectosde()
+    {
+        $proyectos = Proyecto::where('estado', '=', 2)->orderBy('created_at','desc')->paginate(8);
+        return view('proyectosde')->with('proyectos', $proyectos);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function proyectosej()
+    {
+        $proyectos = Proyecto::where('estado', '=', 1)->orderBy('created_at','desc')->paginate(8);
+        return view('proyectosej')->with('proyectos', $proyectos);
     }
 }

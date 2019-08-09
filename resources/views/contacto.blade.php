@@ -45,11 +45,20 @@
                                 {!! Form::close() !!}
                             </div>
                         </div>
+                        <div class="entry-title mt-1 pt-1">
+                            <h1 style="text-align: center;">UBÍCANOS</h1>
+                        </div>
+                        <p style="text-align: center;">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.8709554620946!2d-70.68520918459603!3d-33.452668405012716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c4f7bc41fef3%3A0x5806b51cf1641ae1!2sJos%C3%A9+Luis+Coo%2C+Santiago%2C+Estaci%C3%B3n+Central%2C+Regi%C3%B3n+Metropolitana!5e0!3m2!1sen!2scl!4v1565387202281!5m2!1sen!2scl"
+                                width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </p>
                     </div>
                 </div>
             </div>
-        </main>
-        <hr>
     </div>
+    </main>
+    <hr>
+</div>
 </div>
 @endsection

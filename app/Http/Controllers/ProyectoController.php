@@ -150,7 +150,7 @@ class ProyectoController extends Controller
         // Create Proyecto
         $proyecto = Proyecto::find($id);
         $proyecto->nombre = $request->input('nombre');
-        $proyecto->descripcion = $request->input('descsripcion');
+        $proyecto->descripcion = $request->input('descripcion');
         if($request->hasFile('imagen')){
             $proyecto->imagen = $fileNameToStore;
         }

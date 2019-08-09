@@ -10,10 +10,12 @@
                         <div class="card">
                             <div class="card-header" style="text-align: center;">
                                 <h2 class="card-title">Proyectos</h2>
+                                @if(!Auth::guest())
                                 <div class="card-tools" style="text-align: right;">
                                     <a class="btn btn-primary" href="/proyectos/create" role="button"><i
-                                            class="fas fa-plus"></i> Crear</a>
+                                        class="fas fa-plus"></i> Crear</a>
                                 </div>
+                                @endif
                             </div>
                             <div class="card-body">
                                 @if(count($proyectos) > 0)

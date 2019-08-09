@@ -38,8 +38,8 @@ class ProyectoController extends Controller
     public function create()
     {
         $options = [
-            '1' => 'Ejecutado',
-            '2' => 'En Desarrollo'
+            '0' => 'Ejecutado',
+            '1' => 'En Desarrollo'
         ];
         return view('proyectos.create')->with('options', $options);
     }
@@ -113,8 +113,8 @@ class ProyectoController extends Controller
             return redirect('/proyectos')->with('error', 'Proyecto no Existe!');
         }
         $options = [
-            '1' => 'Ejecutado',
-            '2' => 'En Desarrollo'
+            '0' => 'Ejecutado',
+            '1' => 'En Desarrollo'
         ];
         return view('proyectos.edit')->with('proyecto', $proyecto)->with('options', $options);
     }

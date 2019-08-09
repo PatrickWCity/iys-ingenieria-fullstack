@@ -116,7 +116,7 @@ class WelcomeController extends Controller
      */
     public function proyectosde()
     {
-        $proyectos = Proyecto::where('estado', '=', 2)->orderBy('created_at','desc')->paginate(8);
+        $proyectos = Proyecto::where('estado', '=', 1)->orderBy('created_at','desc')->paginate(8);
         return view('proyectosde')->with('proyectos', $proyectos);
     }
 
@@ -127,7 +127,7 @@ class WelcomeController extends Controller
      */
     public function proyectosej()
     {
-        $proyectos = Proyecto::where('estado', '=', 1)->orderBy('created_at','desc')->paginate(8);
+        $proyectos = Proyecto::where('estado', '=', 0)->orderBy('created_at','desc')->paginate(8);
         return view('proyectosej')->with('proyectos', $proyectos);
     }
 }

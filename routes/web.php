@@ -33,8 +33,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/proyectosej', 'HomeController@index')->name('proyectosej');
+Route::get('/proyectosej', 'WelcomeController@proyectosej')->name('proyectosej');
 
-Route::get('/proyectosde', 'HomeController@index')->name('proyectosde');
+Route::get('/proyectosde', 'WelcomeController@proyectosde')->name('proyectosde');
 
-Route::get('/contacto2', 'HomeController@index')->name('contacto2');
+Route::resource('proyectos', 'ProyectoController');

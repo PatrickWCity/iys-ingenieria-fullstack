@@ -64,7 +64,8 @@ class ProyectoController extends Controller
         if ($request->imagen) {
             $originalImage= $request->file('imagen');
             $nombreImagen = time().$originalImage->getClientOriginalName();
-            Image::make($request->imagen)->save(public_path('img/proyectos/').$nombreImagen);
+            Image::make($request->imagen)->save('img/proyectos/'.$nombreImagen);
+            Image::make($request->imagen)->save('img/noticias/'.$nombreImagenPortada);
         } else {
             $nombreImagen = 'default.png';
         }

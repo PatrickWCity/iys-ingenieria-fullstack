@@ -26,7 +26,7 @@
                                             <div class="card flex-md-row mb-4 box-shadow h-md-250">
                                                 <img class="card-img-right flex-auto d-none d-md-block"
                                                     style="width: 200px; height: 250px;"
-                                                    src="/storage/img/proyectos/{{$proyecto->imagen}}">
+                                                    src="/img/proyectos/{{$proyecto->imagen}}">
                                                 <div class="card-body d-flex flex-column align-items-start">
                                                     <h3 class="mb-0">
                                                         <a class="text-dark"

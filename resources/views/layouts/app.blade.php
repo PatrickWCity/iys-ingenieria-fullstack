@@ -139,7 +139,7 @@
                         <p>
                             <i class="fa fa-home mr-3"></i>Jose Luis Coo Nº 0754</p>
                         <p>
-                            <i class="fa fa-envelope mr-3"></i>info@iysingenieria.cll</p>
+                            <i class="fa fa-envelope mr-3"></i>info@iysingenieria.cl</p>
                         <p>
                             <i class="fa fa-phone mr-3"></i> (56-2) 8533361 - 8726929</p>
                     </div>

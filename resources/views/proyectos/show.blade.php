@@ -12,7 +12,7 @@
                                 {{$proyecto->nombre}}
                             </h1>
                             <div class="card-body">
-                                <img style="width:100%" src="/storage/img/proyectos/{{$proyecto->imagen}}">
+                                <img style="width:100%" src="/img/proyectos/{{$proyecto->imagen}}">
                                 <br><br>
                                 <div>
                                     {!!$proyecto->descripcion!!}

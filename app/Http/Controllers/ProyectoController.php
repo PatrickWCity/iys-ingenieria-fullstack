@@ -74,7 +74,7 @@ class ProyectoController extends Controller
             //$path = $request->file('imagen')->storeAs('public/img/proyectos', $fileNameToStore);
             $path = $request->file('imagen')->move(public_path('img/proyectos'), $fileNameToStore);
         } else {
-            $fileNameToStore = 'noimage.jpg';
+            $fileNameToStore = 'default.png';
         }
 
         // Create Proyecto
@@ -154,6 +154,7 @@ class ProyectoController extends Controller
                 //$path = $request->file('imagen')->storeAs('public/img/proyectos', $nombreImagen);
                 $path = $request->file('imagen')->move(public_path('img/proyectos'), $nombreImagen);
             }
+            $proyectoImagen = public_path('img/proyectos/').$currentImagen;
             if (file_exists($proyectoImagen)) {
                 if ($currentImagen != 'default.png') {
                     @unlink($proyectoImagen);

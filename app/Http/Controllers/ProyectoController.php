@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Proyecto;
 use DB;
-use Image;
 
 class ProyectoController extends Controller
 {
@@ -54,26 +53,33 @@ class ProyectoController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nombre' => 'required|max:191',
+            'nombre' => 'required',
             'descripcion' => 'required',
-            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:1999',
+            'imagen' => 'image|nullable|max:1999',
             'estado' => 'required'
         ]);
 
-        $nombreImagen = '';
-        if ($request->imagen) {
-            $originalImage= $request->file('imagen');
-            $nombreImagen = time().$originalImage->getClientOriginalName();
-            Image::make($request->imagen)->save('public/img/proyectos/'.$nombreImagen);
+        // Handle File Upload
+        if($request->hasFile('imagen')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('imagen')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('imagen')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('imagen')->storeAs('public/img/proyectos', $fileNameToStore);
         } else {
-            $nombreImagen = 'default.png';
+            $fileNameToStore = 'noimage.jpg';
         }
 
         // Create Proyecto
         $proyecto = new Proyecto;
         $proyecto->nombre = $request->input('nombre');
         $proyecto->descripcion = $request->input('descripcion');
-        $proyecto->imagen = $nombreImagen;
+        $proyecto->imagen = $fileNameToStore;
         $proyecto->estado = $request->input('estado');
         $proyecto->save();
 
@@ -123,26 +129,22 @@ class ProyectoController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nombre' => 'required|max:191',
-            'descripcion' => 'required',
-            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:1999'
+            'nombre' => 'required',
+            'descripcion' => 'required'
         ]);
 
-        $nombreImagen = '';
-        $proyecto = Proyecto::find($id);
-        $currentImagen = $proyecto->imagen;
-        if ($request->imagen != $currentImagen) {
-            $originalImage= $request->file('imagen');
-            $nombreImagen = time().$originalImage->getClientOriginalName();
-            Image::make($request->imagen)->save(public_path('img/proyectos/').$nombreImagen);
-            $proyectoImagen = public_path('img/proyectos/').$currentImagen;
-            if (file_exists($proyectoImagen)) {
-                if ($currentImagen != 'default.png') {
-                    @unlink($proyectoImagen);
-                }
-            }
-        } else {
-            $nombreImagen = $currentImagen;
+         // Handle File Upload
+        if($request->hasFile('imagen')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('imagen')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('imagen')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('imagen')->storeAs('public/img/proyectos', $fileNameToStore);
         }
 
         // Create Proyecto
@@ -150,7 +152,7 @@ class ProyectoController extends Controller
         $proyecto->nombre = $request->input('nombre');
         $proyecto->descripcion = $request->input('descripcion');
         if($request->hasFile('imagen')){
-            $proyecto->imagen = $nombreImagen;
+            $proyecto->imagen = $fileNameToStore;
         }
         $proyecto->estado = $request->input('estado');
         $proyecto->save();
@@ -173,14 +175,10 @@ class ProyectoController extends Controller
             return redirect('/proyectos')->with('error', 'No existe este Proyecto');
         }
 
-        $currentImagen = $proyecto->imagen;
-        $proyectoImagen = public_path('img/proyectos/').$currentImagen;
-        if (file_exists($proyectoImagen)) {
-            if ($currentImagen != 'default.png') {
-                @unlink($proyectoImagen);
-            }
+        if($proyecto->imagen != 'noimage.jpg'){
+            // Delete Image
+            Storage::delete('public/img/proyectos/'.$proyecto->imagen);
         }
-
         
         $proyecto->delete();
         return redirect('/proyectos')->with('success', 'Proyecto eliminado!');

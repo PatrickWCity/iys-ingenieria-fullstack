@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Proyecto;
 use DB;
+use Image;
 
 class ProyectoController extends Controller
 {
@@ -53,9 +54,9 @@ class ProyectoController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nombre' => 'required',
+            'nombre' => 'required|max:191',
             'descripcion' => 'required',
-            'imagen' => 'image|nullable|max:1999',
+            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:1999',
             'estado' => 'required'
         ]);
 
@@ -130,23 +131,36 @@ class ProyectoController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nombre' => 'required',
-            'descripcion' => 'required'
+            'nombre' => 'required|max:191',
+            'descripcion' => 'required',
+            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:1999'
         ]);
 
-         // Handle File Upload
-        if($request->hasFile('imagen')){
-            // Get filename with the extension
-            $filenameWithExt = $request->file('imagen')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('imagen')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore= $filename.'_'.time().'.'.$extension;
-            // Upload Image
-            //$path = $request->file('imagen')->storeAs('public/img/proyectos', $fileNameToStore);
-            $path = $request->file('imagen')->move(public_path('img/proyectos'), $fileNameToStore);
+        $nombreImagen = '';
+        $proyecto = Proyecto::find($id);
+        $currentImagen = $proyecto->imagen;
+        if ($request->imagen != $currentImagen) {
+            // Handle File Upload
+            if($request->hasFile('imagen')){
+                // Get filename with the extension
+                $filenameWithExt = $request->file('imagen')->getClientOriginalName();
+                // Get just filename
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                // Get just ext
+                $extension = $request->file('imagen')->getClientOriginalExtension();
+                // Filename to store
+                $nombreImagen= $filename.'_'.time().'.'.$extension;
+                // Upload Image
+                //$path = $request->file('imagen')->storeAs('public/img/proyectos', $nombreImagen);
+                $path = $request->file('imagen')->move(public_path('img/proyectos'), $nombreImagen);
+            }
+            if (file_exists($proyectoImagen)) {
+                if ($currentImagen != 'default.png') {
+                    @unlink($proyectoImagen);
+                }
+            }
+        } else {
+            $nombreImagen = $currentImagen;
         }
 
         // Create Proyecto
@@ -154,9 +168,7 @@ class ProyectoController extends Controller
         $proyecto->nombre = $request->input('nombre');
         $proyecto->descripcion = $request->input('descripcion');
         if($request->hasFile('imagen')){
-            $proyecto->imagen = $fileNameToStore;
-            // Delete Image
-            Storage::delete('public/img/proyectos/'.$proyecto->imagen);
+            $proyecto->imagen = $nombreImagen;
         }
         $proyecto->estado = $request->input('estado');
         $proyecto->save();
@@ -179,10 +191,14 @@ class ProyectoController extends Controller
             return redirect('/proyectos')->with('error', 'No existe este Proyecto');
         }
 
-        if($proyecto->imagen != 'noimage.jpg'){
-            // Delete Image
-            Storage::delete('public/img/proyectos/'.$proyecto->imagen);
+        $currentImagen = $proyecto->imagen;
+        $proyectoImagen = public_path('img/proyectos/').$currentImagen;
+        if (file_exists($proyectoImagen)) {
+            if ($currentImagen != 'default.png') {
+                @unlink($proyectoImagen);
+            }
         }
+
         
         $proyecto->delete();
         return redirect('/proyectos')->with('success', 'Proyecto eliminado!');

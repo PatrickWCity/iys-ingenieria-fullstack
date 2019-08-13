@@ -70,7 +70,8 @@ class ProyectoController extends Controller
             // Filename to store
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
             // Upload Image
-            $path = $request->file('imagen')->storeAs('public/img/proyectos', $fileNameToStore);
+            //$path = $request->file('imagen')->storeAs('public/img/proyectos', $fileNameToStore);
+            $path = $request->file('imagen')->move(public_path('img/proyectos'), $fileNameToStore);
         } else {
             $fileNameToStore = 'noimage.jpg';
         }
@@ -144,7 +145,8 @@ class ProyectoController extends Controller
             // Filename to store
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
             // Upload Image
-            $path = $request->file('imagen')->storeAs('public/img/proyectos', $fileNameToStore);
+            //$path = $request->file('imagen')->storeAs('public/img/proyectos', $fileNameToStore);
+            $path = $request->file('imagen')->move(public_path('img/proyectos'), $fileNameToStore);
         }
 
         // Create Proyecto
@@ -153,6 +155,8 @@ class ProyectoController extends Controller
         $proyecto->descripcion = $request->input('descripcion');
         if($request->hasFile('imagen')){
             $proyecto->imagen = $fileNameToStore;
+            // Delete Image
+            Storage::delete('public/img/proyectos/'.$proyecto->imagen);
         }
         $proyecto->estado = $request->input('estado');
         $proyecto->save();

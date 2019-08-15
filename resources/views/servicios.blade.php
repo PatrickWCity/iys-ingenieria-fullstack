@@ -7,9 +7,28 @@
             <h1 class="entry-title" style="text-transform:uppercase; text-align:left;">
                 SERVICIOS
             </h1>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque volutpat mauris ac lacus congue sagittis eget at nunc. Fusce pulvinar libero ut efficitur fermentum. Nullam ante tortor, lacinia id hendrerit a, molestie non neque. Mauris placerat ut erat ac vestibulum. Nam a erat risus. Nunc varius bibendum nibh in varius. Suspendisse nec tortor sagittis metus consectetur bibendum sed in orci. Phasellus sem nibh, cursus in tortor sit amet, placerat sollicitudin est. Nunc molestie elementum elit a tincidunt. Fusce tempus tristique erat at cursus. Aenean sagittis sit amet mauris vitae pretium. Aenean quis mauris ut justo condimentum vehicula. Sed eleifend ex volutpat est elementum posuere. Pellentesque enim metus, bibendum vehicula tortor ut, iaculis pretium elit. Integer nec diam nec sem hendrerit ornare id quis elit. Ut lacinia euismod ligula commodo tristique.Aliquam eget sapien ac ex cursus dignissim. Quisque massa orci, vehicula a egestas eget, vehicula vel mi. Nunc tempor sit amet ante sed elementum. Donec vitae elit at arcu vestibulum aliquam. Maecenas consectetur leo non ex lobortis imperdiet. Pellentesque a dui eu risus convallis commodo. Suspendisse scelerisque turpis in lobortis posuere. Phasellus a sagittis ipsum, nec sagittis metus. In mollis, mauris vel cursus porta, nibh risus consectetur nulla, non tincidunt sem nisl vitae nisl.Maecenas laoreet elit nec quam venenatis dapibus. Duis ultricies venenatis metus, sit amet sollicitudin dui ornare vel. Vivamus non dolor orci. Sed volutpat dui in purus eleifend vestibulum. Quisque lobortis ac risus id ornare. Donec placerat mi sem, nec imperdiet enim tempor nec. Vivamus molestie cursus ligula eget viverra. Donec nunc sem, finibus ac ultrices vel, gravida sed turpis. Cras in nulla eleifend, aliquet ligula ac, dapibus ipsum. Proin tempus nibh vitae orci facilisis ullamcorper. Cras ac nibh non nunc consequat elementum. Aliquam et rutrum ex. Ut condimentum metus sed tristique finibus.
-            </p>
+            <div style="text-align: left;">
+                <ol type="a">
+                    <li><b>Depto. Ingeniería: </b>Dedicado al desarrollo de la ingeniería básica y de detalles de proyectos de pequeña y gran envergadura. Contando con ingenieros y dibujantes proyectistas con los conocimientos y la experiencia necesaria para llevar a cabo un óptimo trabajo.</li>
+                    <li><b>Depto. de Montaje: </b>
+                        <ul style="list-style-type:disc;">
+                            <li>El departamento está organizado en el siguiente orden jerárquico:
+                                <ul style="list-style-type:circle;">
+                                    <li>Jefe de Departamento.</li>
+                                    <li>Supervisores.</li>
+                                    <li>Prevencionista de Riesgo.</li>
+                                    <li>Maestro.</li>
+                                    <li>Ayudante.</li>
+                                </ul>  
+                            </li>
+                            <li>Contamos con Ingenieros y Técnicos con las herramientas académicas necesarias para un buen desempeño en sus funciones.</li>
+                            <li>Todo el personal cuenta con Exámenes de Altura aprobados en la Asociación Chilena de Seguridad (ACHS). Los certificados respectivos se adjuntan al presente informe.</li>
+                            <li>Periódicamente se están realizando Charlas de Seguridad internas presentadas por nuestro ingeniero Experto en Prevención de Riesgos (con inscripción en la SEREMI de Salud).</li>
+                        </ul> 
+                    </li>
+                    <li><b>Depto. de Arquitectura: </b>Área que se dedica al diseño de planos de construcción de diversas áreas a las cuales se necesite este departamento, dentro de nuestras creaciones se encuentran la construcción de planos para los baños de visitas de TESSUE Talagante a lo que también se generó una presentación 3d del mismo.</li>
+                </ol>
+                </div>
             <hr>
         </div>
     </div>

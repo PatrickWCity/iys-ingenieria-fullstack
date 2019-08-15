@@ -32,7 +32,7 @@
                                                         <a class="text-dark"
                                                             href="/proyectos/{{$proyecto->id}}">{{$proyecto->nombre}}</a>
                                                     </h3>
-                                                    <p class="card-text mb-auto">{{$proyecto->descripcion}}</p>
+                                                    <p class="card-text mb-auto">{!!$proyecto->descripcion!!}</p>
                                                     @if(!Auth::guest())
                                                     <a href="/proyectos/{{$proyecto->id}}/edit"
                                                         class="btn btn-primary">Editar</a>

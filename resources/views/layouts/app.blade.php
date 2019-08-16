@@ -10,8 +10,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body style="background-repeat: no-repeat; background-position: center center;"
-    background="{{ asset('img/diseño-parte-grafica.png') }}">
+<body style="background: url({{ asset('img/diseño-parte-grafica.png') }}) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;">
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
             <div class="container">

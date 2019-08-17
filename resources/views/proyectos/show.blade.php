@@ -11,8 +11,8 @@
                             <h1 class="card-header" style="text-align: center;">
                                 {{$proyecto->nombre}}
                             </h1>
-                            <div class="card-body">
-                                <img style="width:100%" src="/img/proyectos/{{$proyecto->imagen}}">
+                            <div class="card-body" style="text-align:center;">
+                                <img style="height:400px;width: 100%; object-fit: cover;" src="/img/proyectos/{{$proyecto->imagen}}">
                                 <br><br>
                                 <div>
                                     {!!$proyecto->descripcion!!}

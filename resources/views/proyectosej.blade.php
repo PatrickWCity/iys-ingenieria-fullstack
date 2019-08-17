@@ -18,7 +18,7 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                                                <img class="card-img-right flex-auto d-none d-md-block"
+                                                <img class="card-img-right flex-auto d-flex d-md-block"
                                                     style="width: 200px; height: 250px;"
                                                     src="/img/proyectos/{{$proyecto->imagen}}">
                                                 <div class="card-body d-flex flex-column align-items-start">
@@ -26,7 +26,7 @@
                                                         <a class="text-dark"
                                                             href="/proyectos/{{$proyecto->id}}">{{$proyecto->nombre}}</a>
                                                     </h3>
-                                                    <p class="card-text mb-auto">{{$proyecto->descripcion}}</p>
+                                                    <p style="overflow: hidden;text-overflow: ellipsis;" class="card-text mb-auto">{!!$proyecto->descripcion!!}</p>
                                                 </div>
 
                                             </div>
